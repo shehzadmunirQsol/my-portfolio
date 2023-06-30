@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
@@ -8,7 +6,7 @@ import { exploreWorlds } from "~/constants";
 import { staggerContainer } from "~/utils/motion";
 // import { ExploreCard, TitleText, TypingText } from "../components";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
-import { client } from "../../../client";
+import { client } from "../../../sanity_client";
 import { TitleText, TypingText } from "../ui/CustomTexts";
 import ExploreCard from "../ui/ExploreCard";
 
@@ -22,12 +20,14 @@ const Explore = () => {
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
   console.log(works, "works works");
   useEffect(() => {
-    const query = '*[_type == "works"]';
+    (async () => {
+      const query = '*[_type == "works"]';
 
-    client.fetch(query).then((data) => {
-      setWorks(data);
-      setFilterWork(data);
-    });
+      await client.fetch(query).then((data) => {
+        setWorks(data);
+        setFilterWork(data);
+      });
+    })();
   }, []);
   useEffect(() => {
     rowContainer.current.scrollLeft += scrollValue;
@@ -73,7 +73,7 @@ const Explore = () => {
         </div>
         <div
           ref={rowContainer}
-          className=" scrollbar-none flex min-h-[50vh]  w-full gap-2 overflow-y-hidden overflow-x-scroll scroll-smooth px-24 lg:min-h-[50vh] lg:flex-row"
+          className=" flex min-h-[50vh] w-full  gap-2 overflow-y-hidden overflow-x-scroll scroll-smooth px-24 scrollbar-none lg:min-h-[50vh] lg:flex-row"
         >
           {works.map((world: any, index) => (
             <ExploreCard

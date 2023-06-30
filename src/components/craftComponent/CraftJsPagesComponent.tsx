@@ -60,7 +60,7 @@ export default function CraftJsPagesComponent(props: any) {
                 background="#ffff"
                 data-cy="frame-container"
               >
-                <Images src={Art.src} w={"100"} alt="Logo" href="" />
+                <Images src={Art.src} width={"100"} alt="Logo" href="" />
 
                 <Element
                   canvas

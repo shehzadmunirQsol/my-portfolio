@@ -1,12 +1,10 @@
-"use client";
-
 import { motion } from "framer-motion";
 import { textContainer, textVariant2 } from "~/utils/motion";
 
 export const TypingText = ({ title, textStyles }: any) => (
   <motion.p
     variants={textContainer}
-    className={`text-secondary-white text-[14px] font-normal ${textStyles}`}
+    className={`text-[14px] font-normal text-secondary-white ${textStyles}`}
   >
     {Array.from(title).map((letter: any, index: number) => (
       <motion.span variants={textVariant2} key={index}>

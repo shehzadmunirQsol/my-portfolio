@@ -1,7 +1,13 @@
+"use client"
 import imageUrlBuilder from "@sanity/image-url";
-import { createClient } from "next-sanity";
+// import { createClient } from "next-sanity";
+import createClient from "@sanity/client";
 
 export const client = createClient({
+  // encodeSourceMapAtPath: true,
+  // encodeSourceMap: true,
+  // studioUrl: "https://your-studio-url",
+  // // logger: console.log,
   projectId: "tubr46jz",
   dataset: "production",
   apiVersion: "2022-02-01",

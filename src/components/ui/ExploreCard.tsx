@@ -1,10 +1,8 @@
-"use client";
-
 import { motion } from "framer-motion";
 
 import styles from "~/styles/index";
 import { fadeIn } from "~/utils/motion";
-import { urlFor } from "../../../client";
+import { urlFor } from "../../../sanity_client";
 import headset from "~/public/headset.svg";
 
 const ExploreCard = ({

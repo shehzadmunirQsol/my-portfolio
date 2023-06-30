@@ -14,7 +14,7 @@ import Navbar from "~/components/ui/Navbar";
 import { api } from "~/utils/api";
 import stamp from "~/public/SHEHZAD.png";
 
-const Home: NextPage = () => {
+const Home = () => {
   // const hello = api.example.hello.useQuery({ text: "from tRPC" });
 
   return (

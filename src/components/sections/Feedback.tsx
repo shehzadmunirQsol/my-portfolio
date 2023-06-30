@@ -1,11 +1,9 @@
-"use client";
-
 import { motion } from "framer-motion";
 
 import styles from "~/styles";
 import { fadeIn, staggerContainer, zoomIn } from "~/utils/motion";
 import { useEffect, useState } from "react";
-import { client } from "../../../client";
+import { client } from "../../../sanity_client";
 import planet_09 from "~/public/planet-09.png";
 import stamp from "~/public/SHEHZAD.png";
 
@@ -19,16 +17,18 @@ const Feedback = () => {
   };
 
   useEffect(() => {
-    const query = '*[_type == "testimonials"]';
-    const brandsQuery = '*[_type == "brands"]';
+    (async () => {
+      const query = '*[_type == "testimonials"]';
+      const brandsQuery = '*[_type == "brands"]';
 
-    client.fetch(query).then((data) => {
-      setTestimonials(data);
-    });
+      await client.fetch(query).then((data) => {
+        setTestimonials(data);
+      });
 
-    client.fetch(brandsQuery).then((data) => {
-      setBrands(data);
-    });
+      await client.fetch(brandsQuery).then((data) => {
+        setBrands(data);
+      });
+    })();
   }, []);
   console.log(testimonials, "testimonials");
   return (
